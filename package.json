@@ -1,7 +1,7 @@
 {
-  "name": "skypager-ts",
-  "displayName": "skypager-ts",
-  "description": "",
+  "name": "skypager-vscode",
+  "displayName": "skypager-vscode",
+  "description": "Skypager extension for Visual Studio Code",
   "version": "0.0.1",
   "publisher": "taniarascia",
   "engines": {
@@ -38,10 +38,6 @@
     ]
   },
   "main": "./out/extension",
-  "extends": [
-    "tslint:latest",
-    "tslint-config-prettier"
-  ],
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -56,5 +52,8 @@
     "tslint-config-prettier": "^1.15.0",
     "typescript": "^2.6.1",
     "vscode": "^1.1.21"
+  },
+  "dependencies": {
+    "skypager-runtimes-node": "^39.9.2"
   }
 }

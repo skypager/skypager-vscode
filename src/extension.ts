@@ -1,11 +1,11 @@
 import * as vscode from 'vscode'
+import showOutputChannel from './functions'
+import showPreviewPanel from './experimental-functions'
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('skypager-ts is running.')
+  console.log('skypager-vscode is running.')
 
-  let disposable = vscode.commands.registerCommand('extension.skypagerDocs', () => {
-    vscode.window.showInformationMessage('Hello Skypager!')
-  })
+  let command = vscode.commands.registerCommand('extension.skypagerDocs', showOutputChannel)
 
-  context.subscriptions.push(disposable)
+  context.subscriptions.push(command)
 }

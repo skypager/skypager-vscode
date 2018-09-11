@@ -1,65 +1,133 @@
-# skypager-ts README
+# Skypager Docs
 
-This is the README for your extension "skypager-ts". After writing up a brief description, we recommend including the following sections.
+This is the initial testing repository for the Skypager Docs Visual Studio Code extension. Below is documentation for getting started on creating an extension.
+
+## Installation and Setup
+
+In order to generate a development Visual Studio Code extension, install Yeoman and the [VS Code Extension Generator](https://github.com/Microsoft/vscode-generator-code).
+
+```bash
+npm install -g yo generator-code
+```
+
+Launch the generator.
+
+```
+yo code
+```
+
+Select `New Extension <Typescript>` to finish the installation.
+
+### Additional Configuration
+
+To get our preferred Prettier settings configured with Typescript, install the `tslint-config-prettier` package.
+
+```
+npm i -D tslint-config-prettier
+```
+
+And add the following to `tslint.json`.
+
+```json
+// package.json
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ]
+}
+```
+
+These are the settings being used.
+
+```json
+// .prettierrc
+{
+  "semi": false,
+  "printWidth": 100,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "bracketSpacing": true
+}
+```
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Keybindings
 
-For example if there is an image subfolder under your extension project workspace:
+Use `⇧ ⌘ 9` to run the `skypager-docs`.
 
-\!\[feature X\]\(images/feature-x.png\)
+You can also open the command palette with `⇧ ⌘ P` and find `Show Skypager Docs`.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Finally, if you right click on a page, `Show Skypager Docs` will show up in the context menu.
+
+All of this is configured through the `"contributes"` property.
+
+```json
+// package.json
+"contributes": {
+    "commands": [
+      {
+        "command": "extension.skypagerDocs",
+        "title": "Show Skypager Docs"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.skypagerDocs",
+          "group": "Skypager@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.skypagerDocs",
+        "key": "ctrl+shift+9",
+        "mac": "cmd+shift+9",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+```
+
+## Understanding the VS Code API
+
+- [Documentation for the VS Code Namespace API](https://code.visualstudio.com/docs/extensionAPI/vscode-api)
+
+Everything lives on the `vscode` object.
+
+```typescript
+import * as vscode from 'vscode'
+```
+
+An extension is loaded through the `activate()` function.
+
+```typescript
+export function activate(context: vscode.ExtensionContext) {
+  console.log('skypager-vscode is running.')
+
+  //...
+}
+```
+
+We register the commands we're calling from `package.json` via keybindings, context menus, etc. with `vscode.commands.registerCommand`.
+
+```typescript
+vscode.commands.registerCommand('extension.skypagerDocs', customCommandFunction)
+```
+
+The API lists all sort of functions we can use - for example, we can open a text-only output in the console panel and display some text with `vscode.window.createOutputChannel`.
+
+```typescript
+export default function showOutputChannel() {
+let channel = vscode.window.createOutputChannel('Skypager Docs')
+  channel.appendLine('Show Skypager Docs in the Output Channel')
+  channel.show()
+}
+```
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension requires `skypager-runtimes-node`.
