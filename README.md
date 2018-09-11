@@ -2,7 +2,20 @@
 
 This is the initial testing repository for the Skypager Docs Visual Studio Code extension. Below is documentation for getting started on creating an extension.
 
-## Installation and Setup
+## Installing Extension
+
+Clone this repo in `.vscode/extensions` and `npm install`.
+
+```bash
+cd ~/.vscode/extensions
+git clone git@github.com:skypager/skypager-vscode.git
+cd skypager-vscode
+npm install
+```
+
+Reload VS Code and the extension will be loaded.
+
+## Setting Up a New Extension
 
 In order to generate a development Visual Studio Code extension, install Yeoman and the [VS Code Extension Generator](https://github.com/Microsoft/vscode-generator-code).
 
@@ -18,7 +31,7 @@ yo code
 
 Select `New Extension <Typescript>` to finish the installation.
 
-### Additional Configuration
+## Prettier Configuration
 
 To get our preferred Prettier settings configured with Typescript, install the `tslint-config-prettier` package.
 
