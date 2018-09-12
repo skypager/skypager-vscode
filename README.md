@@ -47,7 +47,6 @@ npm i -D tslint-config-prettier
 And add the following to `tslint.json`.
 
 ```json
-// package.json
 {
   "extends": [
     "tslint:latest",
@@ -59,7 +58,6 @@ And add the following to `tslint.json`.
 These are the settings being used.
 
 ```json
-// .prettierrc
 {
   "semi": false,
   "printWidth": 100,
@@ -83,7 +81,6 @@ Finally, if you right click on a page, `Show Skypager Api` will show up in the c
 All of this is configured through the `"contributes"` property.
 
 ```json
-// package.json
 "contributes": {
     "commands": [
       {
@@ -133,7 +130,7 @@ export function activate(context: vscode.ExtensionContext) {
 We register the commands we're calling from `package.json` via keybindings, context menus, etc. with `vscode.commands.registerCommand`.
 
 ```typescript
-vscode.commands.registerCommand('extension.skypagerApi', customCommandFunction)
+vscode.commands.registerCommand('extension.skypagerApi', showOutputChannel)
 ```
 
 The API lists all sort of functions we can use - for example, we can open a text-only output in the console panel and display some text with `vscode.window.createOutputChannel`.
