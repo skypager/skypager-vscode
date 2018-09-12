@@ -1,15 +1,17 @@
 import * as vscode from 'vscode'
-
-// const panel = vscode.WebviewPanel
+import getWebviewContent from './getWebviewContent'
 
 export default function showPreviewPanel() {
-  let channel = vscode.window.createWebviewPanel(
+  const panel = vscode.window.createWebviewPanel(
     'skypager-preview',
-    'Skypager Docs',
+    'Skypager Api',
     vscode.ViewColumn.Two,
     {
-      // Enable javascript in the webview
       enableScripts: true,
-    },
+    }
   )
+
+  panel.webview.html = getWebviewContent()
+
+  panel.onDidDispose(() => {})
 }

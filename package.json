@@ -11,26 +11,26 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.skypagerDocs"
+    "onCommand:extension.skypagerApi"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "extension.skypagerDocs",
-        "title": "Show Skypager Docs"
+        "command": "extension.skypagerApi",
+        "title": "Show Skypager Api"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "extension.skypagerDocs",
+          "command": "extension.skypagerApi",
           "group": "Skypager@1"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "extension.skypagerDocs",
+        "command": "extension.skypagerApi",
         "key": "ctrl+shift+9",
         "mac": "cmd+shift+9",
         "when": "editorTextFocus"

@@ -6,7 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
   console.log('skypager-vscode is running.')
 
   // Just replace the function here to switch between options
-  let command = vscode.commands.registerCommand('extension.skypagerDocs', showOutputChannel)
+  let command = vscode.commands.registerCommand('extension.skypagerApi', showWebview)
 
   context.subscriptions.push(command)
 }

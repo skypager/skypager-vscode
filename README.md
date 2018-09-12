@@ -1,20 +1,24 @@
-# Skypager Docs
+# Skypager Api
 
-This is the initial testing repository for the Skypager Docs Visual Studio Code extension. Below is documentation for getting started on creating an extension.
+This is the initial testing repository for the Skypager Api Visual Studio Code extension. Below is documentation for getting started on creating an extension.
 
 ## Installing Extension
 
-Clone this repo in `.vscode/extensions` and `npm install`. `npm run watch` or building will create the `out` folder.
+Clone this repo in `.vscode/extensions` and `npm install`. 
 
 ```bash
 cd ~/.vscode/extensions
 git clone git@github.com:skypager/skypager-vscode.git
 cd skypager-vscode
 npm install
-npm run watch
+npm compile
 ```
 
 Reload VS Code and the extension will be loaded.
+
+## Contributing
+
+Run `npm run watch` to compile changes.
 
 ## Setting Up a New Extension
 
@@ -72,9 +76,9 @@ These are the settings being used.
 
 Use `⇧ ⌘ 9` to run `skypager-vscode`.
 
-You can also open the command palette with `⇧ ⌘ P` and find `Show Skypager Docs`.
+You can also open the command palette with `⇧ ⌘ P` and find `Show Skypager Api`.
 
-Finally, if you right click on a page, `Show Skypager Docs` will show up in the context menu.
+Finally, if you right click on a page, `Show Skypager Api` will show up in the context menu.
 
 All of this is configured through the `"contributes"` property.
 
@@ -83,21 +87,21 @@ All of this is configured through the `"contributes"` property.
 "contributes": {
     "commands": [
       {
-        "command": "extension.skypagerDocs",
-        "title": "Show Skypager Docs"
+        "command": "extension.skypagerApi",
+        "title": "Show Skypager Api"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "extension.skypagerDocs",
+          "command": "extension.skypagerApi",
           "group": "Skypager@1"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "extension.skypagerDocs",
+        "command": "extension.skypagerApi",
         "key": "ctrl+shift+9",
         "mac": "cmd+shift+9",
         "when": "editorTextFocus"
@@ -129,15 +133,15 @@ export function activate(context: vscode.ExtensionContext) {
 We register the commands we're calling from `package.json` via keybindings, context menus, etc. with `vscode.commands.registerCommand`.
 
 ```typescript
-vscode.commands.registerCommand('extension.skypagerDocs', customCommandFunction)
+vscode.commands.registerCommand('extension.skypagerApi', customCommandFunction)
 ```
 
 The API lists all sort of functions we can use - for example, we can open a text-only output in the console panel and display some text with `vscode.window.createOutputChannel`.
 
 ```typescript
 export default function showOutputChannel() {
-let channel = vscode.window.createOutputChannel('Skypager Docs')
-  channel.appendLine('Show Skypager Docs in the Output Channel')
+let channel = vscode.window.createOutputChannel('Skypager Api')
+  channel.appendLine('Show Skypager Api in the Output Channel')
   channel.show()
 }
 ```
