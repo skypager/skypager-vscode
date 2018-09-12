@@ -4,13 +4,14 @@ This is the initial testing repository for the Skypager Docs Visual Studio Code 
 
 ## Installing Extension
 
-Clone this repo in `.vscode/extensions` and `npm install`.
+Clone this repo in `.vscode/extensions` and `npm install`. `npm run watch` or building will create the `out` folder.
 
 ```bash
 cd ~/.vscode/extensions
 git clone git@github.com:skypager/skypager-vscode.git
 cd skypager-vscode
 npm install
+npm run watch
 ```
 
 Reload VS Code and the extension will be loaded.
@@ -69,7 +70,7 @@ These are the settings being used.
 
 ### Keybindings
 
-Use `⇧ ⌘ 9` to run the `skypager-docs`.
+Use `⇧ ⌘ 9` to run `skypager-vscode`.
 
 You can also open the command palette with `⇧ ⌘ P` and find `Show Skypager Docs`.
 
